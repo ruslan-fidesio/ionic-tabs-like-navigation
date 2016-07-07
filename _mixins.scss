@@ -1,0 +1,29 @@
+@mixin footer-navigation-background($style, $color, $border-color) {
+  .#{$style} {
+    &.footer-navigation {
+      background-color: $color;
+      background-image: linear-gradient(0deg, $border-color, $border-color 50%, transparent 50%);
+      border-color: $border-color;
+    }
+  }
+}
+
+@mixin footer-navigation-color($style, $color) {
+  .#{$style} {
+    navigation-item a {
+      color: rgba($color, $footer-navigation-off-opacity);
+      opacity: 1;
+      .badge {
+        opacity: $footer-navigation-off-opacity;
+      }
+      &.active,
+      &.activated {
+        color: $color;
+        border: 0 solid $color;
+        .badge {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
