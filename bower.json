@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "ruslan-fidesio/ionic-footer-navigation"
+    "url": "git://github.com/ruslan-fidesio/ionic-footer-navigation.git"
   },
   "ignore": [
     ".gitignore",
