@@ -69,7 +69,7 @@ IonicTabsLikeNavigation.directive(
                     }
                 }
             },
-            template : function () {
+            template : function (elem, attrs) {
                 var ngClass = "{" +
                     "'active': $state.includes('{{ rootState ? rootState : state }}')," +
                     "'has-icon': icon," +
@@ -78,10 +78,10 @@ IonicTabsLikeNavigation.directive(
                     "}";
                 return '' +
                     '<a ' +
-                    (state ? 'ui-sref="{{ state }}" ' : '') +
+                    (attrs.state ? 'ui-sref="{{ state }}" ' : '') +
                     'ng-class="' + ngClass + '" ' +
-                    (!state && href ? 'href="'+href+'" ' : '') +
-                    (target ? 'target="'+target+'" ' : '') +
+                    (!attrs.state && attrs.href ? 'href="' + attrs.href + '" ' : '') +
+                    (attrs.target ? 'target="' + attrs.target + '" ' : '') +
                     '>' +
                     '<i ng-show="icon" class="navigation-icon icon {{ icon }}"></i>' +
                     '<span class="navigation-title">{{ title }}</span>' +
