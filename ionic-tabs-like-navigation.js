@@ -54,6 +54,8 @@ IonicTabsLikeNavigation.directive(
             scope : {
                 state : '@',
                 rootState : '@',
+                href : '@',
+                target : '@',
                 title : '@',
                 icon : '@',
                 showTitleOnClick : '@'
@@ -76,8 +78,10 @@ IonicTabsLikeNavigation.directive(
                     "}";
                 return '' +
                     '<a ' +
-                    'ui-sref="{{ state }}" ' +
-                    'ng-class="' + ngClass + '"' +
+                    (state ? 'ui-sref="{{ state }}" ' : '') +
+                    'ng-class="' + ngClass + '" ' +
+                    (!state && href ? 'href="'+href+'" ' : '') +
+                    (target ? 'target="'+target+'" ' : '') +
                     '>' +
                     '<i ng-show="icon" class="navigation-icon icon {{ icon }}"></i>' +
                     '<span class="navigation-title">{{ title }}</span>' +
