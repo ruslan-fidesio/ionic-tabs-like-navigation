@@ -1,0 +1,173 @@
+/**
+ * Tabs Like Navigation
+ * --------------------------------------------------
+ * Much better than standard tabs implementation
+ */
+@import "variables";
+@import "mixins";
+
+tabs-like-navigation {
+  width: 100%;
+  display: block;
+
+  .bar {
+    padding: 0;
+  }
+
+  .tabs-like-navigation {
+    @include display-flex();
+    @include flex-direction(horizontal);
+    @include justify-content(center);
+    @include translate3d(0, 0, 0);
+
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: $tabs-like-navigation-height;
+
+    border-style: solid;
+    border-top-width: 1px;
+
+    background-size: 0;
+    line-height: $tabs-like-navigation-height;
+
+    @media (min--moz-device-pixel-ratio: 1.5),
+    (-webkit-min-device-pixel-ratio: 1.5),
+    (min-device-pixel-ratio: 1.5),
+    (min-resolution: 144dpi),
+    (min-resolution: 1.5dppx) {
+      padding-top: 1px;
+      border-top: none !important;
+      border-bottom: none;
+      background-position: top;
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+navigation-item {
+  @include flex(1);
+  display: block;
+  overflow: hidden;
+
+  max-width: $navigation-item-max-width;
+  height: 100%;
+
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-weight: 400;
+  font-size: $tabs-like-navigation-text-font-size;
+  font-family: $font-family-sans-serif;
+
+  opacity: 0.7;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 12px 0;
+    color: rgba(0, 0, 0, $tabs-like-navigation-off-opacity);
+    opacity: 1;
+    text-decoration: none;
+    .badge {
+      opacity: $tabs-like-navigation-off-opacity;
+    }
+    &.active,
+    &.activated {
+      color: #000;
+      border: 0 solid #000;
+      .badge {
+        opacity: 1;
+      }
+    }
+
+    .navigation-icon {
+      display: block;
+      margin: 0 auto;
+      height: $tabs-like-navigation-icon-size;
+      font-size: $tabs-like-navigation-icon-size;
+    }
+
+    &.has-icon, &.has-icon-and-title {
+      padding: 4px 0;
+    }
+
+    &.has-icon-and-title {
+
+      &.show-title-on-click {
+        .navigation-icon {
+          height: $tabs-like-navigation-icon-size;
+          font-size: $tabs-like-navigation-icon-size;
+        }
+        .navigation-title {
+          display: none;
+          font-size: $tabs-like-navigation-text-font-size;
+        }
+
+        &.active {
+          .navigation-icon {
+            height: $tabs-like-navigation-icon-size * 0.6;
+            font-size: $tabs-like-navigation-icon-size * 0.6;
+          }
+          .navigation-title {
+            display: inline;
+            font-size: $tabs-like-navigation-text-font-size * 0.75;
+          }
+        }
+      }
+
+      .navigation-icon {
+        height: $tabs-like-navigation-icon-size * 0.6;
+        font-size: $tabs-like-navigation-icon-size * 0.6;
+      }
+      .navigation-title {
+        font-size: $tabs-like-navigation-text-font-size * 0.75;
+      }
+    }
+
+    &.has-badge {
+      position: relative;
+
+      .badge {
+        position: absolute;
+        top: 4%;
+        right: 33%; // fallback
+        right: calc(50% - 26px);
+        padding: $tabs-like-navigation-badge-padding;
+        height: auto;
+        font-size: $tabs-like-navigation-badge-font-size;
+        line-height: $tabs-like-navigation-badge-font-size + 4;
+      }
+    }
+  }
+}
+
+@include tabs-like-navigation-background('tabs-like-navigation-background-light', $light, $bar-light-border);
+@include tabs-like-navigation-background('tabs-like-navigation-background-positive', $positive, $bar-positive-border);
+@include tabs-like-navigation-background('tabs-like-navigation-background-calm', $calm, $bar-calm-border);
+@include tabs-like-navigation-background('tabs-like-navigation-background-stable', $stable, $bar-stable-border);
+@include tabs-like-navigation-background('tabs-like-navigation-background-assertive', $assertive, $bar-assertive-border);
+@include tabs-like-navigation-background('tabs-like-navigation-background-balanced', $balanced, $bar-balanced-border);
+@include tabs-like-navigation-background('tabs-like-navigation-background-energized', $energized, $bar-energized-border);
+@include tabs-like-navigation-background('tabs-like-navigation-background-royal', $royal, $bar-royal-border);
+@include tabs-like-navigation-background('tabs-like-navigation-background-dark', $dark, $bar-dark-border);
+
+@include tabs-like-navigation-color('tabs-like-navigation-color-light', $light);
+@include tabs-like-navigation-color('tabs-like-navigation-color-positive', $positive);
+@include tabs-like-navigation-color('tabs-like-navigation-color-calm', $calm);
+@include tabs-like-navigation-color('tabs-like-navigation-color-stable', $stable);
+@include tabs-like-navigation-color('tabs-like-navigation-color-assertive', $assertive);
+@include tabs-like-navigation-color('tabs-like-navigation-color-balanced', $balanced);
+@include tabs-like-navigation-color('tabs-like-navigation-color-energized', $energized);
+@include tabs-like-navigation-color('tabs-like-navigation-color-royal', $royal);
+@include tabs-like-navigation-color('tabs-like-navigation-color-dark', $dark);

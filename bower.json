@@ -1,14 +1,14 @@
 {
-  "name": "ionic-footer-navigation",
-  "version": "0.1.1",
-  "description": "An Ionic plugin that can be used to replace tabs and having a single ion-nav-view and history through all of your app",
+  "name": "ionic-tabs-like-navigation",
+  "version": "0.1.5",
+  "description": "A Ionic plugin that can be used to replace tabs and having a single ion-nav-view and history through all of your app",
   "author": "Ruslan Kassimov <ruslan.kassimov@fidesio.com>",
   "main": [
-    "ionic-footer-navigation.js"
+    "ionic-tabs-like-navigation.js"
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/ruslan-fidesio/ionic-footer-navigation.git"
+    "url": "git://github.com/ruslan-fidesio/ionic-tabs-like-navigation.git"
   },
   "ignore": [
     ".gitignore",

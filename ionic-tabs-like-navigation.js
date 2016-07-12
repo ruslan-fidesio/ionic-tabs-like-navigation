@@ -1,29 +1,37 @@
-var BetterTabsModule = angular.module('ionicFooterNavigation', []);
+var IonicTabsLikeNavigation = angular.module('ionicTabsLikeNavigation', []);
 
 /**
  * Main footer navigation container
  *
  * @attr tab-bg : specify tab background color
  * @attr tab-color : specify tab font color
+ * @attr encapsulation : specify tab position in the app
  */
-BetterTabsModule.directive(
-    'footerNavigation',
+IonicTabsLikeNavigation.directive(
+    'tabsLikeNavigation',
     function () {
         return {
             restrict : 'E',
             compile : function (elem, attrs) {
-                var footer = angular.element('<ion-footer-bar></ion-footer-bar>');
-                var betterTabs = angular.element('<div class="footer-navigation"></div>');
+                var encapsulation = null;
+                var tabsLikeNavigation = angular.element('<div class="tabs-like-navigation"></div>');
                 var tabs = elem.find('navigation-item');
-                elem.append(footer);
-                footer.append(betterTabs);
-                betterTabs.append(tabs);
+
+                if (attrs.encapsulation) {
+                    encapsulation = angular.element('<' + attrs.encapsulation + '></' + attrs.encapsulation + '>');
+                    elem.append(encapsulation);
+                    encapsulation.append(tabsLikeNavigation);
+                } else {
+                    elem.append(tabsLikeNavigation);
+                }
+
+                tabsLikeNavigation.append(tabs);
 
                 if (attrs.tabBg) {
-                    betterTabs.addClass('footer-navigation-background-' + attrs.tabBg);
+                    tabsLikeNavigation.addClass('tabs-like-navigation-background-' + attrs.tabBg);
                 }
                 if (attrs.tabColor) {
-                    betterTabs.addClass('footer-navigation-color-' + attrs.tabColor);
+                    tabsLikeNavigation.addClass('tabs-like-navigation-color-' + attrs.tabColor);
                 }
             }
         };
@@ -39,7 +47,7 @@ BetterTabsModule.directive(
  * @attr icon : ion icon code
  * @attr show-title-on-click : if icon and title are used, allows to show only the icon in deactivated state
  */
-BetterTabsModule.directive(
+IonicTabsLikeNavigation.directive(
     'navigationItem',
     ['$state', function ($state) {
         return {
@@ -51,7 +59,7 @@ BetterTabsModule.directive(
                 showTitleOnClick : '@'
             },
             restrict : 'E',
-            required : ['^footerNavigation'],
+            required : ['^tabsLikeNavigation'],
             compile : function (elem, attrs) {
                 return {
                     post : function (scope) {
