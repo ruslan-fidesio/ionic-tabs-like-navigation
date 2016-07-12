@@ -1,12 +1,16 @@
 # ionic-tabs-like-navigation
 
-Ionic footer navigation alternative to ionTabs with a single ion-nav-view and a fully navigable application
+Ionic footer navigation alternative to ionTabs with a single ion-nav-view and a fully navigable application.
 
 ## Install
 
 ```
 bower install ionic-tabs-like-navigation --save
 ```
+
+Add `ionicTabsLikeNavigation` to your application modules.
+
+Include `ionic-tabs-like-navigation.js` and `ionic-tabs-like-navigation.scss`.
 
 ## Attributes
 
@@ -30,8 +34,7 @@ navigation-item
 Use text only buttons.
 
 ```html
-<ion-nav-view></ion-nav-view>
-<tabs-like-navigation tab-bg="positive">
+<tabs-like-navigation>
     <navigation-item state="app.profile" title="Profile"></navigation-item>
     <navigation-item state="app.themes.list" rootState="app.themes" title="Themes"></navigation-item>
 </tabs-like-navigation>
@@ -40,8 +43,7 @@ Use text only buttons.
 Use icons only buttons.
 
 ```html
-<ion-nav-view></ion-nav-view>
-<tabs-like-navigation tab-bg="positive">
+<tabs-like-navigation>
     <navigation-item state="app.profile" icon="ion-person"></navigation-item>
     <navigation-item state="app.themes.list" rootState="app.themes" icon="ion-compose"></navigation-item>
 </tabs-like-navigation>
@@ -50,8 +52,7 @@ Use icons only buttons.
 Use icons and text buttons.
 
 ```html
-<ion-nav-view></ion-nav-view>
-<tabs-like-navigation tab-bg="positive">
+<tabs-like-navigation>
     <navigation-item state="app.profile" icon="ion-person" title="Profile"></navigation-item>
     <navigation-item state="app.themes.list" rootState="app.themes" icon="ion-compose" title="Themes"></navigation-item>
 </tabs-like-navigation>
@@ -60,9 +61,19 @@ Use icons and text buttons.
 Use icons and text buttons but show the text only when clicked.
 
 ```html
-<ion-nav-view></ion-nav-view>
-<tabs-like-navigation tab-bg="positive">
+<tabs-like-navigation>
     <navigation-item state="app.profile" icon="ion-person" title="Profile" show-title-on-click="true"></navigation-item>
     <navigation-item state="app.themes.list" rootState="app.themes" icon="ion-compose" title="Themes" show-title-on-click="true"></navigation-item>
+</tabs-like-navigation>
+```
+
+## Use encapsulation
+
+Encapsulate to the footer bar (ionTabs-like).
+
+```html
+<tabs-like-navigation encapsulation="ion-footer-bar">
+    <navigation-item state="app.profile" title="Profile"></navigation-item>
+    <navigation-item state="app.themes.list" rootState="app.themes" title="Themes"></navigation-item>
 </tabs-like-navigation>
 ```
