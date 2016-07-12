@@ -1,6 +1,6 @@
 {
   "name": "ionic-tabs-like-navigation",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "description": "A Ionic plugin that can be used to replace tabs and having a single ion-nav-view and history through all of your app",
   "author": "Ruslan Kassimov <ruslan.kassimov@fidesio.com>",
   "main": [
