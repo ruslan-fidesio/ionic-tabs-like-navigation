@@ -12,9 +12,10 @@ IonicTabsLikeNavigation.directive(
     function () {
         return {
             restrict : 'E',
+            transclude : true,
             compile : function (elem, attrs) {
                 var encapsulation = null;
-                var tabsLikeNavigation = angular.element('<div class="tabs-like-navigation"></div>');
+                var tabsLikeNavigation = angular.element('<div class="tabs-like-navigation" ng-transclude></div>');
                 var tabs = elem.find('navigation-item');
 
                 if (attrs.encapsulation) {
@@ -51,6 +52,7 @@ IonicTabsLikeNavigation.directive(
     'navigationItem',
     ['$state', function ($state) {
         return {
+            transclude : true,
             scope : {
                 state : '@',
                 rootState : '@',
@@ -61,7 +63,7 @@ IonicTabsLikeNavigation.directive(
                 showTitleOnClick : '@'
             },
             restrict : 'E',
-            required : ['^tabsLikeNavigation'],
+            required : ['^^tabsLikeNavigation'],
             compile : function (elem, attrs) {
                 return {
                     post : function (scope) {
@@ -82,7 +84,7 @@ IonicTabsLikeNavigation.directive(
                     'ng-class="' + ngClass + '" ' +
                     (!attrs.state && attrs.href ? 'href="' + attrs.href + '" ' : '') +
                     (attrs.target ? 'target="' + attrs.target + '" ' : '') +
-                    '>' +
+                    ' ng-transclude>' +
                     '<i ng-show="icon" class="navigation-icon icon {{ icon }}"></i>' +
                     '<span class="navigation-title">{{ title }}</span>' +
                     '</a>';

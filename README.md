@@ -23,7 +23,7 @@ tabs-like-navigation
 
 navigation-item
     - state : state to navigate to (ui-sref)
-    - root-state : root state to compare to (used in nested states)
+    - root-state : root state to compare to for active class (used in nested states)
     - href : if state is not defined, href is generated from this attribute
     - target : link target is generated from this attribute
     - title : text title
@@ -35,10 +35,17 @@ navigation-item
 
 When you have nested states, you can use `root-state` attribute to compare the current state route to the root state.
 
+You __MUST__ use the `root-state` attribute when you give parameters to your state.
+
 ```html
 <tabs-like-navigation>
     <navigation-item state="app.profile" title="Profile"></navigation-item>
     <navigation-item state="app.themes.list" root-state="app.themes" title="Themes"></navigation-item>
+</tabs-like-navigation>
+
+<tabs-like-navigation encapsulation="ion-footer-bar">
+    <navigation-item state="app.profile" title="Profile"></navigation-item>
+    <navigation-item state="app.themes.list({id : $parent.scopeId})" root-state="app.themes.list" title="Themes"></navigation-item>
 </tabs-like-navigation>
 ```
 
@@ -77,6 +84,17 @@ Use icons and text buttons but show the text only when clicked.
 <tabs-like-navigation>
     <navigation-item state="app.profile" icon="ion-person" title="Profile" show-title-on-click="true"></navigation-item>
     <navigation-item state="app.themes.list" root-state="app.themes" icon="ion-compose" title="Themes" show-title-on-click="true"></navigation-item>
+</tabs-like-navigation>
+```
+
+## Transclude
+
+If you need to access your controller scope, use `$parent` in `navigation-item`.
+
+```html
+<tabs-like-navigation encapsulation="ion-footer-bar">
+    <navigation-item state="app.profile" title="Profile"></navigation-item>
+    <navigation-item state="app.themes.list({id : $parent.myScopeVar})" root-state="app.themes.list" title="Themes"></navigation-item>
 </tabs-like-navigation>
 ```
 
